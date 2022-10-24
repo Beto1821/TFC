@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import UserService from '../services/User';
 
-export default class UserController {
+class UserController {
   constructor(private service = new UserService()) { }
 
-  public getRole = async (req: Request, res: Response) => {
+  getRole = async (req: Request, res: Response) => {
     const { authorization } = req.headers;
 
     if (!authorization) {
@@ -16,3 +16,5 @@ export default class UserController {
     return res.status(200).json(role);
   };
 }
+
+export default new UserController();
