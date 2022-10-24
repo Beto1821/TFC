@@ -37,7 +37,7 @@ describe('Seu teste', () => {
   //      ...
 
   //   expect(...)
-  // });
+  // })
 
   it('Seu sub-teste', () => {
     expect(false).to.be.eq(true);
