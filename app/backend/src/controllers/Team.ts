@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import teamModel from '../database/models/Teams';
+import teamModel from '../database/models/teams';
 
 class TeamsController {
   getAll = async (_req: Request, res: Response) => {
