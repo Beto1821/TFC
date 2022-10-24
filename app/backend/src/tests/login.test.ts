@@ -7,7 +7,7 @@ import * as sinon from 'sinon';
 import chaiHttp = require('chai-http');
 
 import { app } from '../app';
-import User from '../database/models/User';
+import User from '../database/models/user';
 import UserService from '../services/User';
 import {
   findOne, invalidEmail, invalidPassword, noEmail,
