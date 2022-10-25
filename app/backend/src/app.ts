@@ -1,7 +1,7 @@
 import * as express from 'express';
 import loginRouter from './routes/loginRoute';
 import teamsRouter from './routes/teamsRoute';
-import matchesRouter from '/routes/matchesRoute';
+import matchesRouter from './routes/matchesRoute';
 
 class App {
   public app: express.Express;
