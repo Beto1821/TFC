@@ -1,5 +1,5 @@
 import { INTEGER, BOOLEAN, Model } from 'sequelize';
-import db from '.';
+import db from './index';
 import Teams from './teams';
 
 class Matches extends Model {
@@ -40,7 +40,7 @@ Matches.init({
   },
 }, {
   sequelize: db,
-  modelName: 'teams',
+  modelName: 'matches',
   underscored: true,
   timestamps: false,
 });
