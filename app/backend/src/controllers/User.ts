@@ -10,8 +10,8 @@ class UserController {
     if (!authorization) {
       return res.status(401).json({ message: 'unauthorized' });
     }
-    const token = authorization.replace('Bearer ', '');
-    const role = this.service.getRole(token as string);
+
+    const role = this.service.getRole(authorization as string);
 
     return res.status(200).json(role);
   };
