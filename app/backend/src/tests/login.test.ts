@@ -69,11 +69,10 @@ describe('Testes Session 01', () => {
     });
 
     it('06 - teste role', async () => {
-      const userService = new UserService();
 
       sinon.stub(User, 'findOne').resolves(findOne as User);
       sinon.stub(bcrypt, 'compare').resolves(true);
-      sinon.stub(userService, 'getRole').resolves({ role: 'admin' });
+      sinon.stub(UserService, 'getRole').resolves({ role: 'admin' });
 
       const response = await chai.request(app).post('/login').send(validUser);
 

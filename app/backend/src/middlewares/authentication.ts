@@ -3,8 +3,6 @@ import { compare } from 'bcryptjs';
 import UserService from '../services/User';
 import geraToken from '../util/geratoken';
 
-const service = new UserService();
-
 const authenticate = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
 
@@ -12,7 +10,7 @@ const authenticate = async (req: Request, res: Response, next: NextFunction) => 
     return res.status(400).json({ message: 'All fields must be filled' });
   }
 
-  const user = await service.findByEmail(email);
+  const user = await UserService.findByEmail(email);
 
   if (!user) return res.status(401).json({ message: 'Incorrect email or password' });
 
