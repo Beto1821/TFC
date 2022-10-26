@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { request } from 'http';
 import MatchesServices from '../services/Matches';
 import TeamServices from '../services/Teams';
 
@@ -26,7 +25,10 @@ class MatchesController {
         .json({ message: 'It is not possible to create a match with two equal teams' });
     }
     const filter = await TeamServices.getById([homeTeam, awayTeam]);
-    if ('statusCode' in filter) return res.status(filter.statusCode).json(filter.message);
+    if ('statusCode' in filter) {
+      const { statusCode, message } = filter;
+      return res.status(statusCode).json({ message });
+    }
 
     const final = await MatchesServices.insert(match);
     return res.status(201).json(final);

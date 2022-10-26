@@ -5,9 +5,9 @@ class TeamsService {
   getById = async (ids: number[]) => {
     const teams = await Promise.all(ids.map((id) => Teams.findOne({ where: { id } })));
 
-    const verifyInvalidTeam = teams.some((team) => !team);
+    const invalidTeam = teams.some((team) => !team);
 
-    if (verifyInvalidTeam) {
+    if (invalidTeam) {
       return { statusCode: 404, message: 'There is no team with such id!' };
     }
 
