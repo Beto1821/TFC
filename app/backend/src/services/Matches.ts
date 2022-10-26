@@ -25,6 +25,11 @@ class MatchesService {
     });
     return matches;
   };
+
+  insert = async (match: Matches) => {
+    const verify = await Matches.create({ ...match, inProgress: true });
+    return verify;
+  };
 }
 
 export default new MatchesService();
