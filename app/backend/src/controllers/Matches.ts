@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { request } from 'http';
 import MatchesServices from '../services/Matches';
 import TeamServices from '../services/Teams';
 
@@ -29,6 +30,20 @@ class MatchesController {
 
     const final = await MatchesServices.insert(match);
     return res.status(201).json(final);
+  };
+
+  finish = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const finishMatch = await MatchesServices.finish(id);
+    return res.status(200).json(finishMatch);
+  };
+
+  update = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const score = req.body;
+    const update = await MatchesServices.update(Number(id), score);
+
+    return res.status(200).json(update);
   };
 }
 
