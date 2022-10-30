@@ -13,6 +13,11 @@ class TeamsService {
 
     return teams;
   };
+
+  getALLTeams = async () => {
+    const teams = await Teams.findAll();
+    return teams;
+  };
 }
 
 export default new TeamsService();
