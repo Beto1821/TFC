@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
-import { sortLeaderboardHome } from '../services/homeLeaderboard';
-import { sortLeaderboardAway } from '../services/awayLeaderboard';
-import { sortLeaderboard } from '../services/leaderboard';
+import HomeLeaderboard from '../services/homeLeaderboard';
+import AwayLeaderboard from '../services/awayLeaderboard';
+import Leaderboard from '../services/leaderboard';
 
 class LeaderboardController {
   home = async (req: Request, res: Response) => {
-    const ranking = await sortLeaderboardHome();
+    const ranking = await HomeLeaderboard.sortLeaderboardHome();
 
     if (!ranking) return res.status(404).json();
 
@@ -13,7 +13,7 @@ class LeaderboardController {
   };
 
   away = async (req: Request, res: Response) => {
-    const ranking = await sortLeaderboardAway();
+    const ranking = await AwayLeaderboard.sortLeaderboardAway();
 
     if (!ranking) return res.status(404).json();
 
@@ -21,7 +21,7 @@ class LeaderboardController {
   };
 
   getAll = async (req: Request, res: Response) => {
-    const ranking = await sortLeaderboard();
+    const ranking = await Leaderboard.sortLeaderboard();
 
     if (!ranking) return res.status(404).json();
 
